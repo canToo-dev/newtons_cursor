@@ -39,10 +39,12 @@ class NewtonsCursorPoint{
             angle : 0
         }
     }
-    draw(pointerCoords){
+    move(pointerCoords){
         this.resetInfluences();
         this.computeInterectablesInfluence();
         this.computeOffset(pointerCoords)
+    }
+    draw(){
         this.cv.ctx.beginPath();
         this.cv.ctx.arc(this.coordinates.x, this.coordinates.y, 5, 0, 2 * Math.PI);
         this.cv.ctx.stroke();

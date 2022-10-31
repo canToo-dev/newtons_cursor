@@ -17,6 +17,8 @@ class NewtonsCursor{
             x : e.clientX,
             y : e.clientY
         }
+        this.points.forEach(point => point.move(this.cursorPosition))
+
     }
     sumonPoints(){
         for (let index = 0; index < this.pointsNbr; index++) {
@@ -26,7 +28,7 @@ class NewtonsCursor{
         }
     }
     draw(ctx){
-        this.points.forEach(point => point.draw(this.cursorPosition))
+        this.points.forEach(point => point.draw())
     }
     init(){
         window.addEventListener("mousemove", this.updateCursorPosition.bind(this));
