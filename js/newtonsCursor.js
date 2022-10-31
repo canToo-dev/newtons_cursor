@@ -6,7 +6,7 @@ class NewtonsCursor{
             y : 0
         }
         this.options = options;
-        this.pointsNbr = options.pointsCount ?? 1;
+        this.pointsNbr = options.pointsCount ?? 30;
         this.radius = options.radius ?? 50;
         this.g = options.g ?? 19.81;
         this.points = []
