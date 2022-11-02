@@ -1,5 +1,6 @@
 class Interactable extends VectorsUtils{
     constructor(el, cv){
+        super();
         this.el = el;
         this.cv = cv;
         this.init();
@@ -31,7 +32,7 @@ class Interactable extends VectorsUtils{
         const yDistance = this.center.y - point.coordinates.y;
         
         const polar = this.cartesianToPolar(xDistance, yDistance);
-        
+
         const intensity = 9.81 * ((this.mass * point.mass)/Math.pow(polar.distance, 2));
         point.addInfluence({
             distance : intensity,

@@ -1,5 +1,6 @@
 class NewtonsCursorPoint extends VectorsUtils{
     constructor(cv, angle, distance){
+        super();
         this.angle = angle;
         this.distance = distance;
         this.coordinates = {
