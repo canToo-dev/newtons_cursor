@@ -1,4 +1,4 @@
-class NewtonsCursorPoint{
+class NewtonsCursorPoint extends VectorsUtils{
     constructor(cv, angle, distance){
         this.angle = angle;
         this.distance = distance;
@@ -26,11 +26,11 @@ class NewtonsCursorPoint{
     }
 
     computeOffset(pointerCoords){
+        const pointOffset = this.polarToCartesian(this.distance, this.angle);
+        const pointInfluences = this.polarToCartesian(this.influences.distance, this.influences.angle);
         this.coordinates = {
-            x : (pointerCoords.x + this.distance * Math.cos( this.angle )) 
-            - Math.abs((this.influences.distance) * Math.cos( this.influences.angle )),
-            y : (pointerCoords.y + this.distance * Math.sin( this.angle )) - 
-            Math.abs(this.influences.distance * Math.sin( this.influences.angle ))
+            x : pointerCoords.x + pointOffset.x - pointInfluences.x,
+            y : (pointerCoords.y + pointOffset.y  ) - pointInfluences.y
         }
     }
     resetInfluences (){

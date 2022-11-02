@@ -1,4 +1,4 @@
-class Interactable{
+class Interactable extends VectorsUtils{
     constructor(el, cv){
         this.el = el;
         this.cv = cv;
@@ -26,18 +26,16 @@ class Interactable{
         this.cv.ctx.stroke();
     }
     computeAttraction(point){ // I'm pretty sure that the bug's here
+
         const xDistance = this.center.x - point.coordinates.x;
         const yDistance = this.center.y - point.coordinates.y;
-
-
-        const length = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2))
-
-
-        const angle = Math.atan(xDistance/yDistance)
-        const intensity = 9.81 * ((this.mass * point.mass)/Math.pow(length, 2));
+        
+        const polar = this.cartesianToPolar(xDistance, yDistance);
+        
+        const intensity = 9.81 * ((this.mass * point.mass)/Math.pow(polar.distance, 2));
         point.addInfluence({
             distance : intensity,
-            angle : angle
+            angle : polar.angle
         })
     }
 }
